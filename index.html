@@ -76,14 +76,19 @@ Process:
     <script>
         document.getElementById('copyPrompt').addEventListener('click', function () {
             const promptText = document.getElementById('promptText').textContent;
-            navigator.clipboard.writeText(promptText).then(() => {
-                document.getElementById('statusMessage').textContent = 'Prompt copied to clipboard!';
-                setTimeout(() => {
-                    document.getElementById('statusMessage').textContent = '';
-                }, 3000);
-            }).catch(err => {
-                console.error('Failed to copy: ', err);
-                alert('Failed to copy the prompt. Please try again.');
+try {
+    const textarea = document.createElement('textarea');
+    textarea.value = promptText;
+    document.body.appendChild(textarea);
+    textarea.select();
+    document.execCommand('copy');
+    document.body.removeChild(textarea);
+    document.getElementById('statusMessage').textContent = 'Prompt copied to clipboard!';
+} catch (err) {
+    console.error('Failed to copy: ', err);
+    alert('Failed to copy the prompt. Please try again.');
+}
+
             });
         });
     </script>

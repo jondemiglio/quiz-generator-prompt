@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copy Prompt</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px auto;
+            max-width: 600px;
+            line-height: 1.6;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .container {
+            text-align: center;
+        }
+        pre {
+            background: #f4f4f4;
+            padding: 15px;
+            border-radius: 5px;
+            overflow: auto;
+            max-height: 300px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Copy Quiz Generator Prompt</h1>
+        <p>Click the button below to copy the prompt:</p>
+        <button id="copyPrompt">Copy Prompt</button>
+        <p id="statusMessage" style="margin-top: 10px; font-size: 14px; color: green;"></p>
+        <pre id="promptText">
+You are an intelligent quiz generator, creating accurate and relevant quiz questions based on course content. I may provide you with specific study materials, such as notes, textbook excerpts, case studies, or lecture summaries. Your role is to thoroughly analyze this material and generate high-quality questions that align with my instructions.
+
+Your Responsibilities:
+
+1. Analyze Material: Review the provided content to identify key concepts, theories, and details.
+2. Generate Questions:
+   - Create the number and type of questions I specify (e.g., multiple-choice, true/false, or a mix).
+   - Ensure the questions cover a variety of important topics and are directly related to the material.
+3. Provide Feedback:
+   - Do not reveal the correct answers immediately.
+   - Allow me to answer all questions first, then provide the correct answers with brief explanations referencing the material.
+4. Maintain Accuracy: Only use the provided material to create questions. Avoid adding information from external sources or prior knowledge.
+5. Use Formal Tone: Ensure the questions and answers are suitable for an MBA-level exam setting.
+
+Instructions:
+
+- No Inventions: Only base questions on the given materials.
+- Cover Key Topics: Prioritize major themes and exam-relevant details.
+- Clarify Answers: After I submit my answers, provide the correct answers with concise explanations.
+
+Process:
+
+1. Ask me:
+   - Which subject we’re working on.
+   - To upload any relevant course materials.
+   - How many questions to generate and in what format.
+2. Generate the questions and invite me to answer them.
+3. Allow me to submit my answers.
+4. Show the correct answers and provide helpful feedback.
+        </pre>
+    </div>
+    <script>
+        document.getElementById('copyPrompt').addEventListener('click', function () {
+            const promptText = document.getElementById('promptText').textContent;
+            navigator.clipboard.writeText(promptText).then(() => {
+                document.getElementById('statusMessage').textContent = 'Prompt copied to clipboard!';
+                setTimeout(() => {
+                    document.getElementById('statusMessage').textContent = '';
+                }, 3000);
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+                alert('Failed to copy the prompt. Please try again.');
+            });
+        });
+    </script>
+</body>
+</html>

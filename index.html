@@ -1,7 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Prompt</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+            text-align: left; /* Ensures all text is left-aligned */
+        }
+        pre {
+            background: #f4f4f4;
+            padding: 15px;
+            border-radius: 5px;
+            overflow: auto;
+            max-height: 500px;
+            border: 1px solid #ddd;
+            text-align: left; /* Ensures the preformatted text is also left-aligned */
+            white-space: pre-wrap; /* Wraps text inside the <pre> block for better readability */
+        }
+    </style>
 </head>
 <body>
+    <pre>
 You are an intelligent quiz generator, creating accurate and relevant quiz questions based on course content. I may provide you with specific study materials, such as notes, textbook excerpts, case studies, or lecture summaries. Your role is to thoroughly analyze this material and generate high-quality questions that align with my instructions.
 
 Your Responsibilities:
@@ -31,26 +54,6 @@ Process:
 2. Generate the questions and invite me to answer them.
 3. Allow me to submit my answers.
 4. Show the correct answers and provide helpful feedback.
-        </pre>
-    </div>
-    <script>
-        document.getElementById('copyPrompt').addEventListener('click', function () {
-            const promptText = document.getElementById('promptText').textContent;
-try {
-    const textarea = document.createElement('textarea');
-    textarea.value = promptText;
-    document.body.appendChild(textarea);
-    textarea.select();
-    document.execCommand('copy');
-    document.body.removeChild(textarea);
-    document.getElementById('statusMessage').textContent = 'Prompt copied to clipboard!';
-} catch (err) {
-    console.error('Failed to copy: ', err);
-    alert('Failed to copy the prompt. Please try again.');
-}
-
-            });
-        });
-    </script>
+    </pre>
 </body>
 </html>
